@@ -4,6 +4,8 @@
 body{
     font-family: Verdana, sans-serif;
     margin: 0;
+    background-color: #1e1e1e;
+    color: rgb(211, 211, 211);
 }
 
 h1{
@@ -58,36 +60,67 @@ footer{
     width: 100%;
     height: 0;
     padding: 30% 0;
-    background-image: url(../assets/images/lightgrey-line.jpeg); /*change the image to one of you choice */
+    /* background-image: url(../assets/images/lightgrey-line.jpeg); /*change the image to one of you choice */
     background-position: center;
+    filter: contrast(70%) grayscale(100%) ;
     background-size: 100%;
     justify-content: center;
     align-items: center;
     text-align: center;
     text-decoration: none;
-    color:#4f4f4f;
-    transition: all 0.2s; /* CSS transitions https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions */
+    color:#050505;
+    transition: all 0.3s; /* CSS transitions https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions */
 }
 
-/* want a different background image for each project? */
-/* try give each a tag a unique id in your HTML and then set different background images here*/
-/* EXAMPLE CSS: won't work if you just un-comment this:*/
-/* .flex-item a#my-special-id{
-    background-image: url(../assets/images/custom-image-name.jpeg); 
-} */
+#connections a
+{
+    background-image: url(../assets/images/connections.png);
+    
+}
 
+#helping-hand a
+{
+    background-image: url(../assets/images/helping-hand.png);
+}
+
+#barca a
+{
+    background-image: url(../assets/images/barca.png);
+}
+
+#loaf a
+{
+    background-image: url(../assets/images/loaf.png);
+}
+
+#abstract a
+{
+    background-image: url(../assets/images/abstract.png);
+}
+
+#sunset a
+{
+    background-image: url(../assets/images/sunset.png);
+}
 
 .flex-item a:hover{
-    color:#bbbbbb;
+    /* color:#8e8e8e; */
     background-size: 120%;
+    filter: contrast(130%) grayscale(100%) ;
 }
 
 .flex-item h4{
+   opacity: 100%;
    margin:10px;
    background-color: white;
    padding:5px 10px;
+   transition: all 0.2s;
 }
 
+.flex-item a:hover h4
+{
+   opacity: 0%;
+}
 
 /* Media Queries for responsive design */
 

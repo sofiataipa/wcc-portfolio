@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+
+        <!-- meta viewport tag needed to make site responsive on mobile devices https://developer.mozilla.org/en-US/docs/Web/HTML/Viewport_meta_tag -->
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <title>WCC Portfolio - Demo Page</title>
+
+        <!-- including for some global styling -->
+        <link rel="stylesheet" href="../css/style.css">
+
+    </head>
+    <body class="white-background">
+        <nav>
+            <a href="https://sofiataipa.github.io/wcc-portfolio/">back home</a>
+        </nav>
+
+        <main>
+            <section class="center-text">
+                <h1>Revisited Compositions</h1>
+                <h3>A performative Art Piece</h3>
+            </section>
+    
+                
+        <section class="center-text">
+            <div class="video">
+                <iframe src="https://player.vimeo.com/video/822842277?h=27b93a0d55" width="720" height="576" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </section>
+        <section>
+            <h3>/ INTRODUCTION</h3>
+            <p>Revisited Compositions is an audio-visual performance and a collaboration with a Portuguese musician. In the context of his practice, I investigate the concept of Intermedia, bringing sound and image together.</p>
+        </section>
+        <section>
+            <h3>/ CONCEPT AND BACKGROUND RESEARCH</h3>
+            
+            <p>José Miguel Correia is a Portuguese musician working with me to explore how computation can combine two of his practices: music and painting. This project works as a form of interviewing by questioning the relationship between these two complementary artistic expressions. Through computation, I unveil the bond between his two practices, folding over the sound and the image. As an artist, I am producing a new layer of metadata over the work of another artist, by creating this moment of diffraction.</p>
+            <p>As I am researching through practice and through questioning, the first step was to study how his paintings and his music overlapped or intersected. I understood that both were very abstract and portrayed a narrative, either over space or over time. So, my goal was to explore a visualisation of his performance that focused not only on the embodiment of the music, but also how it could leak through the space surrounding him. I studied the concepts of diffraction and intermedia, which where fields explored by Fluxus artists when questioning the boundaries of sound and image.</p>
+            <p>One example that speaks a lot to me in the context of this project is the TV Cello by Nam June Paik, and the performance by Charlotte Moorman (Figures 1 and 2). What interests me in this example is the merging between the technology and the body, and how they create a narrative that takes over the performance space. </p>
+            
+            <div class="flex-container center-content">
+                <div class="flex-item">
+                    <img src="images/concept1.jpg" class="img-documentation"/>
+                </div>
+                <div class="flex-item">
+                    <img src="images/concept2.jpg" class="img-documentation"/>
+                </div>
+            </div>
+            <p class="img-description center-text">Figures 1 and 2 – TV Cello and Charlotte Moorman</p>
+
+            <p>Amon Tobin’s live performance (Figure 3) was another important reference for me, as he uses the boxes as canvas for projection mapping, which was a spark for me to work within the space of the performance.  </p>
+            <img src="images/concept3.jpg" class="smaller-image center-image"/>
+            <p class="img-description center-text">Figure 3 – Amon Tobin ISAM live performance</p>
+
+            <p>
+                For my project, I decided to use painting canvas, as it tied together perfectly all the elements I wanted to explore. Bellow you can see the first sketch as well as the result of the installation composition.
+            </p>
+            
+            <div class="flex-container center-content">
+                <div class="flex-item">
+                    <img src="images/concept4.jpg" class="img-documentation"/>
+                </div>
+                <div class="flex-item">
+                    <img src="images/concept5.jpg" class="img-documentation"/>
+                </div>
+            </div>
+            <p class="img-description center-text">Figures 4 and 5 – Revisited Compositions, Installation space</p>
+
+        </section>
+        <section>
+            <h3>/ TECHNICAL IMPLEMENTATION</h3>
+
+            <p>
+                The performance is based on a series of improvisation sequences on a piano that not only control the movement of five painting projections, but also how they cover the space, by appearing or disappearing on certain cues. 
+            </p>
+            
+            <p>
+                On technical terms, the project has three main elements: the sound input, the visual output and the projection mapping. Since the timeline was tight, I started by working with one outputted painting and its interaction with the sound played. For the visualisation, I used both a blur shader and a noise shader over a sketch of a 3D scene. Bellow you can see the process, heavily inspired by Juan Rodríguez García’s “Reflejos”.
+            </p>
+
+            <div class="flex-container center-content">
+                <div class="flex-item">
+                    <img src="images/technical1.png" class="img-documentation"/>
+                </div>
+                <div class="flex-item">
+                    <img src="images/technical2.png" class="img-documentation"/>
+                </div>
+                <div class="flex-item">
+                    <img src="images/technical3.png" class="img-documentation"/>
+                </div>
+            </div>
+            <p class="img-description center-text">Figures 6, 7 and 8 – Visualisation pipeline</p>
+
+            <p>
+                I start by displaying a 3D scene with the right lighting, materials, colours and positioning of the objects. All this affects the final product, so I invested a lot of time experimenting and debugging to achieve the desired output.
+                After this, I applied a noise shader over the previous image, using createGraphics() to save the outputted image to a graphics buffer.
+                At this stage, I was already experimenting with the sound interaction, but did not feel completely satisfied with the visual output. My goal was to melt the shapes and colours together, to achieve the look of a traditional panting. So, using a third graphics buffer, I also applied a blur shader.
+            </p>
+
+            <p>
+                The use of shaders was crucial for my project, not only to achieve the desired feel, but also for the programme to use less computational resources, thus running smoother. At a very initial stage, I played around with noise functions on p5.js, and quickly understood that I wouldn’t be able to animate them.
+            </p>
+
+            <p>
+                After I successfully accomplished this, I scaled to multiple paintings on a projection. For this, I used the p5.Mapper library that, although limited, could successfully display the 5 paintings
+            </p>
+            
+            <p>
+                For the sound interaction, I used both Midi and the standard audio input with the p5.js audio library. I understood relatively early that I wouldn’t have time to fully master the use of Midi input, so I just used it to solve what the audio data couldn’t achieve. 
+            </p>
+            
+            <p>
+                In terms of hardware and software, I used an electronic piano, an audio interface, one projector and my computer with both my JavaScript programme and Reaper as the Digital Audio Workstation (DAW).
+            </p>
+            
+            <p>
+                Bellow you can see a diagram of the full pipeline.
+            </p>
+
+            <img src="images/technical4.jpg" class="smaller-image center-image"/>
+            <p class="img-description center-text">Figure 9 – Pipeline diagram</p>
+
+        </section>
+        <section>
+            <h3>/ REFLECTION AND FUTURE DEVELOPMENT</h3>
+            <p>The most challenging aspects about this project were learning both shader language and how to work with audio data, two fields I had no previous knowledge about. </p>
+            <p>As explained in the previous section, using shaders was crucial to the computer performance. However, with its use, a lot of issues emerged. The first one being the restrictions the browser had for displaying WebGL graphics. Chrome supports 16 active WebGL buffers at the same time. For me to be able to display the 5 paintings (occupying 15 of those buffers), as well as using an extra canvas for the projection mapping, I had to free one WebGL buffer that the p5.Mapper library was using. This implied that I had to study its source code in order to be able to refactor it.</p>
+            <p>Other optimization issues emerged, so the most learning I had during the course of the implementation was on how to refactor code and optimize it around expensive computational functionalities, mostly removing loops in my functions. A specific example was the implementation of the functionality that stored multiple piano keys at the same time.</p>
+            <p>All these issues made me quickly realise that, for the future development of this project, I will need to use OpenFrameworks.</p>
+            <p>At the end, it was particularly interesting and rewarding to see the performer fully interact with the art piece, rather than simply showcasing his musical skills, working between the control he had and the unpredictable nature of the interaction. This collaboration gave me the opportunity to understand how I can further expand this project. There’s a lot to explore, throughout the process we found a lot of behaviours we would like to experiment with, but that didn’t fit in the timeline we had.</p>
+        </section>
+        <section>
+            <h3>/ REFERENCES AND RESOURCES</h3>
+            <p>/ CONCEPT</p>
+            <ul>
+                <li><a href="https://digitalartarchive.siggraph.org/wp-content/uploads/2018/01/hertz_panel.pdf">Intermedia Art in the Digital Age</a></li>
+                <li><a href="https://www.fxhash.xyz/events/juan-rodriguez-garcia:-reflejos-or-bright-moments-cdmx-fx(hash)/onboarding">Juan Rodríguez García, Reflejos </a></li>
+                <li><a href="https://www.juanrg92.com/">Juan Rodríguez García</a></li>
+                <li><a href="https://www.youtube.com/watch?v=-9lnbIGHzUM">TV Cello, Charlotte Moorman's performance </a></li>
+            </ul>
+
+            <p>/ SHADERS</p>
+            <ul>
+                <li><a href="https://github.com/aferriss/p5jsShaderExamples">Shaders in p5.js</a></li>
+                <li><a href="https://thebookofshaders.com/">The Book of Shaders</a></li>
+                <li><a href="https://editor.p5js.org/buckWorkshop/sketches/g3p5vF_OI">Blur Shader</a></li>
+                <li><a href="https://gist.github.com/patriciogonzalezvivo/670c22f3966e662d2f83">GLSL Noise</a></li>
+            </ul>
+
+            <p>/ CODE</p>
+            <ul>
+                <li><a href="https://github.com/jdeboi/p5.mapper">p5.Mapper Library</a></li>
+                <li><a href="https://editor.p5js.org/cheryl8hei/sketches/dDpl42rkl">Simply Complex, Cheryl Hui</a></li>
+                <li><a href="https://turboflip.de/audioreactive-particles-in-p5-js/">Audioreactive Particles</a></li>
+            </ul>
+
+        </section>
+
+        <footer>
+            <!-- normally information like contact details etc  -->
+            <!-- read more about semantic HTML https://www.w3schools.com/html/html5_semantic_elements.asp -->
+            
+         </footer>
+    </body>
+</html>
